@@ -38,9 +38,9 @@ var chart_width = 800;
             else if (d.cause == "animale"){
                 nb_A_ani = nb_A_ani +1;
             };
-            console.log(nb_A_eco);
-            console.log(nb_A_ani);
-            console.log(nb_A_soc);
+            console.log("nb_A_eco :" + nb_A_eco);
+            console.log("nb_A_ani :" + nb_A_ani);
+            console.log("nb_A_soc :"+ nb_A_soc);
         });
 
         console.log(d);
