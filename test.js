@@ -41,6 +41,7 @@ var chart_width = 800;
             console.log("nb_A_eco :" + nb_A_eco);
             console.log("nb_A_ani :" + nb_A_ani);
             console.log("nb_A_soc :"+ nb_A_soc);
+            console.log("next step")
         });
 
         console.log(d);
