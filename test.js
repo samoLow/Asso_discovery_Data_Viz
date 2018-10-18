@@ -29,7 +29,7 @@ var chart_width = 800;
         data = d;
         data.forEach(function (d) {
             d.taille = +d.taille;
-            if (d.cause == "écologie"){
+            if (d.cause == "ecologie"){
                 nb_A_eco = nb_A_eco +1;
             }
             else if (d.cause == "sociale"){
