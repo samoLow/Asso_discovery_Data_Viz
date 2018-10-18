@@ -8,6 +8,12 @@ var nb_A_soc = 0;
 var nb_A_eco = 0;
 var nb_A_ani = 0;
 
+
+function draw_circle(element, x_coord, y_coord, rayon) {
+    $("#" + element).html("");
+
+}
+
 $(function () {
     console.log("READY");
 
@@ -16,8 +22,8 @@ $(function () {
 
 // Feel free to change or delete any of the code you see in this editor!
 var svg = d3.select("body").append("svg")
-    .attr("width", 960)
-    .attr("height", 500)
+    .attr("width", 400)
+    .attr("height", 400)
     .append("g")
     .attr("transform",
         "translate(" + 30 + "," + 30 + "),rotate(0), scale(1.0)");
@@ -43,7 +49,7 @@ var chart_width = 800;
             console.log("nb_A_soc :"+ nb_A_soc);
             console.log("next step")
         });
-
+        draw_circle("empty_chart", origin_C[0], origin_C[1], rayon_C);
         console.log(d);
 
     });
