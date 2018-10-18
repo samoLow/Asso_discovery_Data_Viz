@@ -177,7 +177,9 @@ $(function () {
         data = d;
         data.forEach(function (d) {
             d.latitude = +d.latitude;
+
         });
+        console.log(d);
 
 
 
