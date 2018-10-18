@@ -1,6 +1,13 @@
 // this is the foirst commentary, try to commit & push
 var data = undefined;
 var margin = {top: 20, right: 20, bottom: 30, left: 40};
+var rayon_C = 180;
+var height_SVG = 400;
+var width_SVG = 400;
+var origin_C = [height_SVG/2, width_SVG/2];
+var nb_A_soc = 0;
+var nb_A_eco = 0;
+var nb_A_ani = 0;
 
 
 function legend(element, keys, z) {
@@ -42,8 +49,6 @@ function treemap(element) {}
 
 function bubble_chart(element, property){
     $("#" + element).html("");
-    var svg = d3.select("#" + element).append("svg").attr("width", 300).attr("height", 300);
-    var width = +svg.attr("width") - margin.left - margin.right;
     var height = +svg.attr("height") - margin.top - margin.bottom;
     var g = svg.append("g").attr("transform", "translate(" + margin.left + "," + margin.top + ")");
 
@@ -79,6 +84,43 @@ function bubble_chart(element, property){
         })
 
 }
+
+function draw_circle(element, x_coord, y_coord, rayon){
+    $("#" + element).html("");
+    var svg = d3.select("#" + element).append("svg").attr("width", 400).attr("height", 400);
+    var width = +svg.attr("width") - margin.left - margin.right;
+    var height = +svg.attr("height") - margin.top - margin.bottom;
+    var g = svg.append("g").attr("transform", "translate(" + margin.left + "," + margin.top + ")");
+
+    svg.selectAll("circle")
+        .data(data)
+        .enter()
+        .append("circle")
+        .attr("cx", function(d){return x(d.fruit) + x.bandwidth()/2;})
+        .attr("cy", function(d){return y2(d.poids);})
+        .attr("r", function(d){return d.poids})
+        .attr("fill", function(d){return c(d.fruit);})
+        .on("mouseover", function(d){
+            d3.select(this)
+                .transition().duration(100)
+                .attr("fill", "black")
+                .attr("r", d.poids*2.0);
+            d3.select(".tooltip")
+                .style("display", "block")
+                .style("top", y2(d.poids) + 5 + "px")
+                .style("left", x(d.fruit) + 25 + "px")
+                .text(d.poids);
+        })
+        .on("mouseout", function(d){
+            d3.select(this)
+                .transition().duration(100)
+                .attr("fill", c(d.fruit))
+                .attr("r", d.poids);
+            d3.select(".tooltip")
+                .style("display", "none");
+        })
+}
+
 
 function bar_chart(element, property) {
     $("#" + element).html("");
@@ -177,6 +219,8 @@ $(function () {
         data = d;
         data.forEach(function (d) {
             d.latitude = +d.latitude;
+            d.taille = +d.taille;
+
 
         });
         console.log(d);
