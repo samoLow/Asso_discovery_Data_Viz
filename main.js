@@ -2,6 +2,7 @@
 var data = undefined;
 var margin = {top: 20, right: 20, bottom: 30, left: 40};
 
+
 function legend(element, keys, z) {
     var legendRectSize = 15;
     var svg = d3.select('#'+element).append('svg')
@@ -39,84 +40,43 @@ function legend(element, keys, z) {
 
 function treemap(element) {
 
-    $("#treemap_" + element).html("");
-    $("#legend_" + element).html("");
-    var svg = d3.select("#treemap_" + element).append("svg").attr("width", 600).attr("height", 300);
+function bubble_chart(element, property){
+    $("#" + element).html("");
+    var svg = d3.select("#" + element).append("svg").attr("width", 300).attr("height", 300);
     var width = +svg.attr("width") - margin.left - margin.right;
     var height = +svg.attr("height") - margin.top - margin.bottom;
     var g = svg.append("g").attr("transform", "translate(" + margin.left + "," + margin.top + ")");
 
-    if (data === undefined) {
-        return;
-    }
-
     var color = d3.scaleOrdinal(d3.schemeCategory10);
 
-    var nested_data = d3.nest()
-        .key(function (d) {
-            return d.status;
+
+    svg.selectAll("circle")
+        .data(data)
+        .enter()
+        .append("circle")
+        .attr("cx", function(d){return x(d.fruit) + x.bandwidth()/2;})
+        .attr("cy", function(d){return y2(Math.log(d.taille));})
+        .attr("r", function(d){return d.poids})
+        .attr("fill", function(d){return c(d.fruit);})
+        .on("mouseover", function(d){
+            d3.select(this)
+                .transition().duration(100)
+                .attr("fill", "black")
+                .attr("r", d.poids*2.0);
+            d3.select(".tooltip")
+                .style("display", "block")
+                .style("top", y2(d.poids) + 5 + "px")
+                .style("left", x(d.fruit) + 25 + "px")
+                .text(d.poids);
         })
-        .key(function (d) {
-            return d.who;
+        .on("mouseout", function(d){
+            d3.select(this)
+                .transition().duration(100)
+                .attr("fill", c(d.fruit))
+                .attr("r", d.poids);
+            d3.select(".tooltip")
+                .style("display", "none");
         })
-        .rollup(function (d) {
-            return d.length;
-        })
-        .entries(data);
-
-    console.log("TREEMAP DATA");
-    console.log(nested_data);
-
-    keys = nested_data.map(function (d) {
-        return d.key;
-    });
-
-    color.domain(keys);
-    legend("legend_" + element, keys, color);
-
-    var treemap = d3.treemap()
-        .size([width, height])
-        .padding(1)
-        .round(true);
-
-    var root = d3.hierarchy({values: nested_data}, function (d) {
-        return d.values;
-    })
-        .sum(function (d) {
-            return d.value;
-        })
-        .sort(function (a, b) {
-            return b.value - a.value;
-        });
-
-    treemap(root);
-
-    var nodes = g.selectAll(".tm")
-        .data(root.leaves())
-        .enter().append("g")
-        .attr('transform', function (d) {
-            return 'translate(' + [d.x0, d.y0] + ')'
-        })
-        .attr("class", "tm");
-
-    nodes.append("rect")
-        .attr("width", function (d) {
-            return d.x1 - d.x0;
-        })
-        .attr("height", function (d) {
-            return d.y1 - d.y0;
-        })
-        .attr("fill", function (d) {
-            return color(d.parent.data.key);
-        });
-
-    nodes.append("text")
-        .attr("class", "tm_text")
-        .attr('dx', 4)
-        .attr('dy', 14)
-        .text(function (d) {
-            return d.data.key + " " + d.data.value;
-        });
 
 }
 
@@ -209,23 +169,18 @@ function bar_chart(element, property) {
 $(function () {
     console.log("READY");
 
-    var URL = "https://docs.google.com/spreadsheets/d/e/2PACX-1vQfeT9lPtJ5ia2XsopWVdvl98Oy7Bu6xL9SVQBEh32OXC8Qk4MKYxr2TcGSSTkAs7kAMfjF83IEGhQ-";
+    var URL = "https://docs.google.com/spreadsheets/d/1kWMkDglBeO6uUuCnJWu9_-r9IeKE4EID160i2CGhV8M";
     URL += "/pub?single=true&output=csv";
 
 
     d3.csv(URL, function (d) {
         data = d;
         data.forEach(function (d) {
-            d.time = +d.time;
+            d.latitude = +d.latitude;
         });
-        bar_chart("bcs", "status");
-        bar_chart("bcw", "who");
-        bar_chart("bct", "time");
-        treemap("status");
-        <!-- add chart of priority -->
-        bar_chart("bcp", "priority");
+
 
 
     });
-
-});
+    consol.log(data);
+})
