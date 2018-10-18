@@ -182,5 +182,5 @@ $(function () {
 
 
     });
-    consol.log(data);
+    console.log(data);
 });
