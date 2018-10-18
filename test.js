@@ -1,3 +1,13 @@
+var data = undefined;
+var margin = {top: 20, right: 20, bottom: 30, left: 40};
+var rayon_C = 180;
+var height_SVG = 400;
+var width_SVG = 400;
+var origin_C = [height_SVG/2, width_SVG/2];
+var nb_A_soc = 0;
+var nb_A_eco = 0;
+var nb_A_ani = 0;
+
 $(function () {
     console.log("READY");
 
@@ -20,21 +30,21 @@ var chart_width = 800;
         data.forEach(function (d) {
             d.taille = +d.taille;
             if (d.cause == "écologie"){
-                nb_A_eco = nb_A_eco+1;
+                nb_A_eco = nb_A_eco +1;
             }
             else if (d.cause == "sociale"){
-                nb_A_soc  = nb_A_soc+1;
+                nb_A_soc  = nb_A_soc +1;
             }
             else if (d.cause == "animale"){
-                nb_A_ani = nb_A_ani+1;
+                nb_A_ani = nb_A_ani +1;
             };
         });
         console.log(nb_A_eco);
         console.log(nb_A_ani);
         console.log(nb_A_soc);
+        console.log(d);
 
         });
-        console.log(d);
 
 
   /*  var y = d3.scaleLinear().domain([0, d3.max(data, function(d){return d.prix;})]).range([chart_height, 0]);
