@@ -183,4 +183,4 @@ $(function () {
 
     });
     consol.log(data);
-})
+});
