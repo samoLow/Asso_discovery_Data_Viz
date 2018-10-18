@@ -38,7 +38,7 @@ function legend(element, keys, z) {
         });
 }
 
-function treemap(element) {
+function treemap(element) {}
 
 function bubble_chart(element, property){
     $("#" + element).html("");
