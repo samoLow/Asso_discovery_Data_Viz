@@ -44,7 +44,7 @@ var chart_width = 800;
         console.log(nb_A_soc);
         console.log(d);
 
-        });
+    });
 
 
   /*  var y = d3.scaleLinear().domain([0, d3.max(data, function(d){return d.prix;})]).range([chart_height, 0]);
