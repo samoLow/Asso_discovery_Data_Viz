@@ -154,8 +154,13 @@ function draw_circle_chart(element, x_coord, y_coord, rayon) {
             d3.select(this)
                 .transition().duration(100)
                 .attr("r", function (d) {
-                    return r(d.taille *2);
-                })
+                    return r(d.taille +1000);
+                });
+            writte_info("name_asso", d.nom);
+            writte_info("adr_asso", d.adresse);
+            writte_info("date_asso", d.creation);
+            writte_info("desc_asso", d.description);
+
         })
         .on("mouseout", function(d) {
             d3.select(this)
@@ -163,7 +168,13 @@ function draw_circle_chart(element, x_coord, y_coord, rayon) {
                 .attr("r", function (d) {
                     return r(d.taille);
                 })
+            writte_info("name_asso", "");
+            writte_info("adr_asso", "");
+            writte_info("date_asso", "");
+            writte_info("desc_asso", "");
         });
+
+
 
 
 
@@ -172,6 +183,11 @@ function draw_circle_chart(element, x_coord, y_coord, rayon) {
 
 }
 
+function writte_info(id_element, property){
+    $("#" + id_element).html("");
+
+    $("#" + id_element).append( property);
+}
 
 function bar_chart(element, property) {
     $("#" + element).html("");
