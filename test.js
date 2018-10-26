@@ -12,6 +12,16 @@ var nb_A_ani = 0;
 function draw_circle(element, x_coord, y_coord, rayon) {
     $("#" + element).html("");
 
+    svg.selectAll("circle")
+        .data(data)
+        .enter()
+        .append("circle")
+        .attr("cx", origin_C)
+        .attr("cy", origin_C)
+        .attr("r", rayon_C)
+        .attr("fill", function(d){return c(d.cause);})
+
+
 }
 
 $(function () {
@@ -21,15 +31,13 @@ $(function () {
     URL += "/pub?single=true&output=csv";
 
 // Feel free to change or delete any of the code you see in this editor!
-var svg = d3.select("body").append("svg")
-    .attr("width", 400)
-    .attr("height", 400)
-    .append("g")
-    .attr("transform",
-        "translate(" + 30 + "," + 30 + "),rotate(0), scale(1.0)");
+
+
 
 var chart_height = 200;
-var chart_width = 800;
+    var chart_width = 800;
+
+
 
     d3.csv(URL, function (d) {
         data = d;
@@ -49,20 +57,20 @@ var chart_width = 800;
             console.log("nb_A_soc :"+ nb_A_soc);
             console.log("next step")
         });
+        var y = d3.scaleLinear().domain([0, height_SVG]);
+        var x = d3.scaleBand()
+            .range([0, chart_width])
+            .padding(0.1)
+            .domain(data.map(function(d) { return d.fruit; }));
+        var c = d3.scaleOrdinal(d3.schemeCategory20);
+
         draw_circle("empty_chart", origin_C[0], origin_C[1], rayon_C);
         console.log(d);
 
     });
 
 
-  /*  var y = d3.scaleLinear().domain([0, d3.max(data, function(d){return d.prix;})]).range([chart_height, 0]);
-    var y2 = d3.scaleLinear().domain([0, d3.max(data, function(d){return d.poids;})]).range([chart_height, 0]);
-    var x = d3.scaleBand()
-        .range([0, chart_width])
-        .padding(0.1)
-        .domain(data.map(function(d) { return d.fruit; }));
-    var c = d3.scaleOrdinal(d3.schemeCategory20);
-
+/*
     // define the line
     var totoline = d3.line()
         .x(function(d) { return x(d.fruit) + x.bandwidth()/2; })
