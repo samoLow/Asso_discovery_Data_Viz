@@ -96,9 +96,9 @@ function draw_circle_chart(element, x_coord, y_coord, rayon) {
     var g = svg.append("g").attr("transform", "translate(" + margin.left + "," + margin.top + ")");
     var x = d3.scaleLinear().domain([0, width_SVG]).range([0, width_SVG]);
     var y = d3.scaleLinear().domain([0, height_SVG]).range([height_SVG, 0]);
-    var r = d3.scaleLinear().domain([0, 2000]).range([3, 10]);
+    var r = d3.scaleLinear().domain([0, 2000]).range([5, 15]);
 
-    var rng_radius = d3.randomUniform(0, rayon);
+    var rng_radius = d3.randomUniform(30, rayon-20);
     var rng_angle1 = d3.randomUniform(-60, 60);
     var rng_angle2 = d3.randomUniform(60, 180);
     var rng_angle3 = d3.randomUniform(180, 300);
@@ -149,7 +149,25 @@ function draw_circle_chart(element, x_coord, y_coord, rayon) {
             } else if (d.cause == "animale") {
                 return color_cust[1];
             }
+        })
+        .on("mouseover", function(d) {
+            d3.select(this)
+                .transition().duration(100)
+                .attr("r", function (d) {
+                    return r(d.taille *2);
+                })
+        })
+        .on("mouseout", function(d) {
+            d3.select(this)
+                .transition().duration(100)
+                .attr("r", function (d) {
+                    return r(d.taille);
+                })
         });
+
+
+
+
 
 
 }
@@ -298,6 +316,8 @@ function bar_chart(element, property) {
     g.append("g")
         .attr("class", "axis")
         .call(d3.axisLeft(y).ticks(null, "s"))
+
+
 }
 
 
