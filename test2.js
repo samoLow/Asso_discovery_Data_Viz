@@ -8,7 +8,7 @@ var origin_C = [height_SVG / 2, width_SVG / 2];
 var nb_A_soc = 0;
 var nb_A_eco = 0;
 var nb_A_ani = 0;
-var color_cust = ["red", "yellow", "green"];
+var color_cust = ["red", "#FDA900", "green"];
 
 
 function legend(element, keys, z) {
@@ -156,10 +156,10 @@ function draw_circle_chart(element, x_coord, y_coord, rayon) {
                 .attr("r", function (d) {
                     return r(d.taille +1000);
                 });
-            writte_info("name_asso", d.nom);
-            writte_info("adr_asso", d.adresse);
-            writte_info("date_asso", d.creation);
-            writte_info("desc_asso", d.description);
+            writte_info("name_asso", "<h2> nom</h2>"+d.nom);
+            writte_info("adr_asso", "<h2> addresse</h2>"+d.adresse);
+            writte_info("date_asso", "<h2> date de création</h2>"+d.creation);
+            writte_info("desc_asso", "<h2> description</h2>"+d.description);
 
         })
         .on("mouseout", function(d) {
@@ -168,10 +168,10 @@ function draw_circle_chart(element, x_coord, y_coord, rayon) {
                 .attr("r", function (d) {
                     return r(d.taille);
                 })
-            writte_info("name_asso", "");
-            writte_info("adr_asso", "");
-            writte_info("date_asso", "");
-            writte_info("desc_asso", "");
+            writte_info("name_asso", "<h2> nom</h2>");
+            writte_info("adr_asso", "<h2> addresse</h2>");
+            writte_info("date_asso", "<h2> date de création</h2>");
+            writte_info("desc_asso", "<h2> description</h2>");
         });
 
 
