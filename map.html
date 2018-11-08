@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Map</title>
+</head>
+<body>
+
+	<!-- Les Selecteurs -->
+	<div id="selectors" style="width:10%;height:390px;display: inline-block;">
+		<img id="selector-eco" src="feuille.png" style="width:100%;height:127px;background-color: #eee;text-align:center;">
+		<img id="selector-animal" src="coeur.png" style="width:100%;height:127px;background-color: #eee;text-align:center;">
+		<img id="selector-social" src="chien.png" style="width:100%;height:127px;background-color: #eee;text-align:center;">
+	</div>
+
+	<!-- La carte -->
+	<div id="googleMap" style="width:90%;height:390px;display: inline-block;float:right;"></div>
+
+	<!-- Bloc en dessous des selecteurs -->
+	<div id="whiteblock" style="width:10%;height:300px;background-color: white;display: inline-block;"></div>
+
+	<!-- Bloc d'information sur l'asso cliquée -->
+	<div id="informations" style="width:90%;height:300px;background-color: #eee;display: inline-block;float: right;">
+
+		<!-- LIGNE 1 -->
+		<div style="width:50%;background-color: brown;display: inline-block;">
+			<h2 style="padding-left: 20px;">Titre 1</h2>
+			<p style="padding-left: 20px;">zergfzer</p>
+		</div>		
+		<div style="width:50%;background-color: red;display: inline-block;float:right;">
+			<h2 style="padding-left: 20px;">Titre 2</h2>
+			<p style="padding-left: 20px;">zergfzer</p>
+		</div>
+
+		<!-- LIGNE 2 -->
+		<div style="width:50%;background-color: yellow;display: inline-block;">
+			<h2 style="padding-left: 20px;">Titre 3</h2>
+			<p style="padding-left: 20px;">zergfzer</p>
+		</div>		
+		<div style="width:50%;background-color: blue;display: inline-block;float:right;">
+			<h2 style="padding-left: 20px;">Titre 4</h2>
+			<p style="padding-left: 20px;">zergfzer</p>
+		</div>
+
+	</div>
+
+
+<script>
+	function myMap() {
+		var mapProp= {
+			center:new google.maps.LatLng(45.757230,4.831791),
+			zoom:13,
+		};
+		var map=new google.maps.Map(document.getElementById("googleMap"),mapProp);
+	}
+
+
+</script>
+
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAqBUfDr3Dbyn2gatzEeyLsfKtsrUNZkxs&callback=myMap"></script>
+</body>
+</html>
+
+

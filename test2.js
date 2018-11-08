@@ -112,9 +112,10 @@ function draw_circle_chart(element, x_coord, y_coord, rayon) {
         .attr("r", rayon)
         .attr("fill", "#F8F8FF");
 
-    console.log(data_f.map(function(d){
+  /*  console.log(data_f.map(function(d){
         return d.cause;
     }));
+    */
     g.selectAll("circle")
         .data(data_f)
         .enter()
@@ -138,7 +139,7 @@ function draw_circle_chart(element, x_coord, y_coord, rayon) {
             }
         })
         .attr("r", function (d) {
-            console.log(d.taille);
+            //console.log(d.taille);
             return r(d.taille);
         })
         .attr("fill", function (d) {
@@ -365,7 +366,6 @@ $(function () {
         //draw_circle("empty_chart", origin_C[0],origin_C[1], rayon_C);
         draw_circle_chart("empty_chart", origin_C[0], origin_C[1], rayon_C);
 
-        console.log(d);
 
     })
 })
