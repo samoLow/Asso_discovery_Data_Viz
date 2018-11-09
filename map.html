@@ -104,7 +104,7 @@
     var URL = "https://docs.google.com/spreadsheets/d/1kWMkDglBeO6uUuCnJWu9_-r9IeKE4EID160i2CGhV8M";
     URL += "/pub?single=true&output=csv";
     var color_cust = ["red", "#FDA900", "green"];
-    var r = d3.scaleLinear().domain([0, 2000]).range([5, 15]);
+    var r = d3.scaleLinear().domain([0, 5]).range([5, 10]);
 
     $("#selector-eco").click(function () {
         eco_is_clicked = !eco_is_clicked;
@@ -221,7 +221,7 @@
                         return false;
                     }
                 });
-                var r = d3.scaleLinear().domain([0, 2000]).range([5, 15]);
+                var r = d3.scaleLinear().domain([0, 5]).range([5, 10]);
 
                 var bound = new google.maps.LatLngBounds();
                 var long;
@@ -548,9 +548,7 @@
                                 tooltip.style("top", (event.pageY - 10) + "px").style("left", (event.pageX + 10) + "px");
                                 d3.select(this)
                                     .transition().duration(100)
-                                    .attr("r", function (d) {
-                                        return r(d.taille + 1000)
-                                    });
+                                    .attr("r", 10);
 
                             })
                             .on("mousemove", function () {
