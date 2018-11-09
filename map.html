@@ -502,6 +502,24 @@
                             .each(transform);
 
 
+                        for (var i = 0; i < 5; i++){
+                            marker.append("circle")
+                                .attr("r", i*3)
+                                .attr("cx", 0)
+                                .attr("cy", 0)
+                                .style("fill", "none")
+                                .style("stroke", "black")
+                            transition()
+                                .delay(Math.pow(i, 2.5) * 50)
+                                .duration(2000)
+                                .ease('quad-in')
+                                .attr("r", r)
+                                .style("stroke-opacity", 0)
+                                .each("end", function () {
+                                    d3.select(this).remove();
+                                });
+                        }
+
                         // Add a circle.
                         marker.append("circle")
                             .attr("r", function (d) {
@@ -556,11 +574,9 @@
                                 writte_info("type", d.cause);
                                 writte_info("urltoasso", d.lien_site);
                                 writte_info("urltooursite", d.lien_ass_d);
+                            })
 
-
-
-
-                            });
+                        ;
 
                         //.style("stroke", "none")
                         function transform(d) {
