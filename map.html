@@ -104,6 +104,7 @@
     var URL = "https://docs.google.com/spreadsheets/d/1kWMkDglBeO6uUuCnJWu9_-r9IeKE4EID160i2CGhV8M";
     URL += "/pub?single=true&output=csv";
     var color_cust = ["red", "#FDA900", "green"];
+    var r = d3.scaleLinear().domain([0, 2000]).range([5, 15]);
 
     $("#selector-eco").click(function () {
         eco_is_clicked = !eco_is_clicked;
