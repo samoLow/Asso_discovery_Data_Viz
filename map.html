@@ -1,50 +1,75 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
-    <script src="https://code.jquery.com/jquery-3.3.1.min.js"
-            integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
-
-    <link rel="stylesheet" href="style.css">
-    <title>Map</title>
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
+	<script   src="https://code.jquery.com/jquery-3.3.1.min.js"   integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="   crossorigin="anonymous"></script>
+    <meta charset="UTF-8">
+	<link rel="stylesheet" href="style.css">
+	<title>Map</title>
+    <link href="https://fonts.googleapis.com/css?family=Secular+One" rel="stylesheet">
+    <style>
+        h2{
+            color:#333;
+            font-family: 'Secular One', sans-serif;
+            font-size: 1.5em;
+        }
+    </style>
 </head>
 <body>
 
-<!-- Les Selecteurs -->
-<div id="selectors" style="width:10%;height:390px;display: inline-block;">
-    <img id="selector-eco" src="feuille.png" style="width:100%;height:127px;background-color: #eee;text-align:center;">
-    <img id="selector-animal" src="coeur.png" style="width:100%;height:127px;background-color: #eee;text-align:center;">
-    <img id="selector-social" src="chien.png" style="width:100%;height:127px;background-color: #eee;text-align:center;">
-</div>
+	<!-- Les Selecteurs -->
+	<div id="selectors" style="width:10%;height:390px;border-radius:5px;display: inline-block;">
+		<img id="selector-eco" src="feuille.png" style="width:100%;height:33%;background-color:rgba(118,226,243,0.2);text-align:center;border-radius:5px 5px 0px 0px;">
+		<img id="selector-animal" src="coeur.png" style="width:100%;height:33%;background-color:rgba(118,226,243,0.2);text-align:center;">
+		<img id="selector-social" src="chien.png" style="width:100%;height:34%;background-color:rgba(118,226,243,0.2);text-align:center;border-radius:0px 0px 5px 5px;;">
+	</div>
 
-<!-- La carte -->
-<div id="map" style="width:90%;height:390px;display: inline-block;float:right;"></div>
+	<!-- La carte -->
+	<div id="map" style="width:90%;height:390px;display: inline-block;float:right;"></div>
 
-<!-- Bloc en dessous des selecteurs -->
-<div id="whiteblock" style="width:10%;height:300px;background-color: white;display: inline-block;"></div>
+	<!-- Bloc en dessous des selecteurs -->
+	<div id="whiteblock" style="width:9%;height:300px;background-color: white;display: inline-block;"></div>
 
-<!-- Bloc d'information sur l'asso cliquée -->
-<div id="informations" style="width:90%;height:300px;background-color: #eee;display: inline-block;float: right;">
+	<!-- Bloc d'information sur l'asso cliquée -->
+	<div id="informations" style="width:90%;height:100%;display: inline-block;margin-bottom:100px;float: right;border:1px black solid;border-radius:10px;">
 
-    <!-- LIGNE 1 -->
-    <div style="width:50%;background-color: brown;display: inline-block;">
-        <h2 style="padding-left: 20px;">Nom :</h2>
-        <p id="nom" style="padding-left: 20px;">zergfzer</p>
-    </div>
-    <div style="width:50%;background-color: red;display: inline-block;float:right;">
-        <h2 style="padding-left: 20px;">Adresse</h2>
-        <p id="adresse" style="padding-left: 20px;">zergfzer</p>
-    </div>
+		<!-- LIGNE 1 -->
+		<div style="width:50%;background-color:rgba(118,226,243,0.2);display: inline-block;">
+			<h2 style="padding: 5px 20px;">Nom :</h2>
+			<p id="nom" style="padding: 5px 20px;">Texte</p>
+		</div>
+        <div style="width:50%;background-color:rgba(118,226,243,0.2);display: inline-block;float:right;">
+			<h2 style="padding: 5px 20px;">Date :</h2>
+			<p id="date" style="padding: 5px 20px;">Texte</p>
+		</div>
 
-    <!-- LIGNE 2 -->
-    <div style="width:50%;background-color: yellow;display: inline-block;">
-        <h2 style="padding-left: 20px;">Date de création de l'association</h2>
-        <p id="date_crea" style="padding-left: 20px;">zergfzer</p>
-    </div>
-    <div style="width:50%;background-color: blue;display: inline-block;float:right;">
-        <h2 style="padding-left: 20px;">Description</h2>
-        <p id="description" style="padding-left: 20px;">zergfzer</p>
-    </div>
+        <!-- LIGNE 2 -->
+		<div style="width:50%;display: inline-block;">
+			<h2 style="padding: 5px 20px;">Adresse de l'Asso :</h2>
+			<p id="adresse" style="padding: 5px 20px;">Texte</p>
+		</div>
+        <div style="width:50%;display: inline-block;float:right;">
+			<h2 style="padding: 5px 20px;">Type :</h2>
+			<p id="type" style="padding: 5px 20px;">Texte</p>
+		</div>
+
+        <!-- LIGNE 3 -->
+		<div style="width:100%;background-color:rgba(118,226,243,0.2);display: inline-block;">
+			<h2 style="padding: 5px 20px;">Description :</h2>
+			<p id="description" style="padding: 5px 20px;">Texte</p>
+		</div>
+
+        <!-- LIGNE 4 -->
+		<div style="width:100%;display: inline-block;">
+			<h2 style="padding: 5px 20px;">Le site de l'Asso</h2>
+			<p id="urltoasso" style="padding: 5px 20px;">Texte</p>
+		</div>
+
+        <!-- LIGNE 5 -->
+		<div style="width:100%;background-color:rgba(118,226,243,0.2);display: inline-block;">
+			<h2 style="padding: 5px 20px;">Notre article</h2>
+			<p id="urltooursite" style="padding: 5px 20px;">Texte</p>
+		</div>
 
 </div>
 
