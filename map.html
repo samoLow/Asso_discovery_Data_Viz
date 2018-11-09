@@ -13,19 +13,25 @@
             font-family: 'Secular One', sans-serif;
             font-size: 1.5em;
         }
+        hr{
+            color:#000000;
+            height: 2px;
+        }
     </style>
 </head>
 <body>
 
 	<!-- Les Selecteurs -->
-	<div id="selectors" style="width:10%;height:390px;border-radius:5px;display: inline-block;">
-		<img id="selector-eco" src="feuille.png" style="width:100%;height:33%;background-color:#625f6b;text-align:center;border-radius:5px 5px 0px 0px;">
-		<img id="selector-social" src="coeur.png" style="width:100%;height:33%;background-color:#625f6b;text-align:center;">
-		<img id="selector-animal" src="chien.png" style="width:100%;height:34%;background-color:#625f6b;text-align:center;border-radius:0px 0px 5px 5px;;">
+	<div id="selectors" style="width:10%;height:410px;border-radius:5px;display: inline-block;">
+		<img id="selector-eco" src="feuille.png" style="width:100%;height:28%;text-align:center;border-radius:5px 5px 0px 0px;">
+		<hr>
+        <img id="selector-social" src="coeur.png" style="width:100%;height:27%;text-align:center;">
+		<hr>
+        <img id="selector-animal" src="chien.png" style="width:100%;height:28%;text-align:center;border-radius:0px 0px 5px 5px;;">
 	</div>
 
 	<!-- La carte -->
-	<div id="map" style="width:90%;height:390px;display: inline-block;float:right;"></div>
+	<div id="map" style="width:90%;height:410px;display: inline-block;float:right;"></div>
 
 	<!-- Bloc en dessous des selecteurs -->
 	<div id="whiteblock" style="width:9%;height:300px;background-color: white;display: inline-block;"></div>
@@ -241,7 +247,7 @@
 
                 // Create the Google Map w/o poi
                 var map = new google.maps.Map(d3.select("#map").node(), {
-                    zoom: 14,
+                    zoom: 13,
                     center: new google.maps.LatLng(45.7642037, 4.8376517),
                     mapTypeId: google.maps.MapTypeId.ROADMAP,
                     styles: [
