@@ -168,7 +168,7 @@ function draw_circle_chart(element, x_coord, y_coord, rayon) {
                 .transition().duration(100)
                 .attr("r", function (d) {
                     return r(d.taille);
-                })
+                });
             writte_info("name_asso", "<h2> nom</h2>");
             writte_info("adr_asso", "<h2> addresse</h2>");
             writte_info("date_asso", "<h2> date de création</h2>");
