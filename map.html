@@ -29,7 +29,7 @@
 		<div style="width:50%;background-color: brown;display: inline-block;">
 			<h2 style="padding-left: 20px;">Nom :</h2>
 			<p id="nom" style="padding-left: 20px;">zergfzer</p>
-		</div>		
+		</div>
 		<div style="width:50%;background-color: red;display: inline-block;float:right;">
 			<h2 style="padding-left: 20px;">Adresse</h2>
 			<p id="adresse" style="padding-left: 20px;">zergfzer</p>
@@ -71,7 +71,6 @@
 
         d3.csv(URL, function (error, data) {
             //1. load data and throw error if there is one
-            if (error) throw error;
             data.forEach(function (d) {
                 d.latitude = +d.latitude;
                 d.longitude = +d.longitude;
